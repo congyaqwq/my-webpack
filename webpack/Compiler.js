@@ -77,6 +77,7 @@ class Compiler {
   // 重写 require函数,输出bundle
   generate(code) { 
     const filePath = path.join(this.output.path, this.output.filename)
+    // 向下寻找依赖，再执行，再继续向下
     const bundle = `
     (function(graph) {
       function require(module){
