@@ -8,11 +8,16 @@ const { transformFromAst } = require('@babel/core')
 const Parser = {
   getAst: path => {
     //  读取入口文件
-    const content = fs.readFileSync(path, 'utf-8')
-    //  将文件内容转为AST抽象语法树
-    return parser.parse(content, {
-      sourceType: 'module'
-    })
+    try {
+      const content = fs.readFileSync(path, 'utf-8')
+       //  将文件内容转为AST抽象语法树
+      return parser.parse(content, {
+        sourceType: 'module'
+      })
+    }catch(e){
+      console.error(`${path} file not found`)
+    }
+   
   },
   getDependencies: (ast, filename) => {
     const dependencies = {}

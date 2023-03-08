@@ -1,2 +1,6 @@
-import { red } from './testRequire.js'
+import { red } from './color.js'
+import { paint } from './usage.js'
+
+
+paint(red)
 
